@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "lightningpodoboo",
+  "version": "${version}",
+  "name": "Lightning Podoboo",
+  "description": "Server-side mod that disables environmental destruction caused by natural lightning.",
+  "authors": [
+    "LostLuma"
+  ],
+  "contact": {
+    "homepage": "https://github.com/LostLuma/Lightning-Podoboo",
+    "sources": "https://github.com/LostLuma/Lightning-Podoboo"
+  },
+  "license": "MIT",
+  "icon": "assets/lightning_podoboo/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.lostluma.lightningpodoboo.LightningPodoboo"
+    ]
+  },
+  "mixins": [
+    "lightningpodoboo.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12.12",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  },
+  "suggests": {}
+}
