@@ -25,6 +25,9 @@ public abstract class FireBlockMixin {
     @Shadow @Final
     private Object2IntMap<Block> burnChances;
 
+    @Shadow
+    abstract protected boolean isFlammable(BlockState state);
+
     @Redirect(
         method = "getBurnChance(Lnet/minecraft/block/BlockState;)I",
         at = @At(value = "INVOKE", target = "Lit/unimi/dsi/fastutil/objects/Object2IntMap;getInt(Ljava/lang/Object;)I")
@@ -45,5 +48,13 @@ public abstract class FireBlockMixin {
         if (state.isOf(LightningPodoboo.COSMETIC_FIRE_BLOCK)) {
             callbackInfo.cancel(); // Prevent natural fire spread
         }
+    }
+
+    @Redirect(
+        method = "scheduledTick",
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/block/FireBlock;isFlammable(Lnet/minecraft/block/BlockState;)Z")
+    )
+    private boolean alwaysExtingishCosmeticFire(FireBlock fireBlock, BlockState state) {
+        return ((Object)this instanceof CosmeticFireBlock) ? false : this.isFlammable(state);
     }
 }
