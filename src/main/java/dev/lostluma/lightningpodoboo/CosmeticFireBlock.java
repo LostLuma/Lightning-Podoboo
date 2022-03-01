@@ -10,7 +10,6 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
 
 public class CosmeticFireBlock extends FireBlock implements PolymerBlock {
     public CosmeticFireBlock(Settings settings) {
@@ -35,11 +34,6 @@ public class CosmeticFireBlock extends FireBlock implements PolymerBlock {
     @Override
     public BlockState getPolymerBlockState(BlockState state) {
         return copyBlockStateDirections(state, getPolymerBlock(state).getDefaultState());
-    }
-
-    @Override
-    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        return Blocks.FIRE.canPlaceAt(state, world, pos);
     }
 
     @Override
