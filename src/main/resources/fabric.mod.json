@@ -3,7 +3,7 @@
   "id": "lightningpodoboo",
   "version": "${version}",
   "name": "Lightning Podoboo",
-  "description": "Server-side mod that disables environmental destruction caused by natural lightning.",
+  "description": "Makes fire created by natural lightning cosmetic, meaning no blocks are destroyed from bad weather.",
   "authors": [
     "LostLuma"
   ],
