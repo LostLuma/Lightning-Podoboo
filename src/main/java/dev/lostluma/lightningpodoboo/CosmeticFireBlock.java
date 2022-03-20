@@ -6,9 +6,12 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ConnectingBlock;
 import net.minecraft.block.FireBlock;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
 public class CosmeticFireBlock extends FireBlock implements PolymerBlock {
@@ -34,6 +37,17 @@ public class CosmeticFireBlock extends FireBlock implements PolymerBlock {
     @Override
     public BlockState getPolymerBlockState(BlockState state) {
         return copyBlockStateDirections(state, getPolymerBlock(state).getDefaultState());
+    }
+
+    @Override
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (!entity.isFireImmune()) {
+            entity.setFireTicks(entity.getFireTicks() + 1);
+            if (entity.getFireTicks() <= 0) {
+                entity.setOnFireFor(8);
+            }
+            entity.damage(DamageSource.IN_FIRE, 1.0f);
+        }
     }
 
     @Override
