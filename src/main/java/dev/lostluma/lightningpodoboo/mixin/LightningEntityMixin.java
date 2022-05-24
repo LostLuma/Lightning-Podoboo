@@ -25,6 +25,6 @@ public class LightningEntityMixin {
             return state;
         }
 
-        return CosmeticFireBlock.copyBlockStateDirections(state, LightningPodoboo.COSMETIC_FIRE_BLOCK.getDefaultState());
+        return CosmeticFireBlock.copyBlockStateAttributes(state, LightningPodoboo.COSMETIC_FIRE_BLOCK.getDefaultState());
     }
 }
