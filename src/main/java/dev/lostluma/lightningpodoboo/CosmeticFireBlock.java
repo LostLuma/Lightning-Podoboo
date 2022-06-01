@@ -91,8 +91,7 @@ public class CosmeticFireBlock extends AbstractFireBlock implements PolymerBlock
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        BlockState updated = Blocks.FIRE.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-        return updated.isAir() ? updated : copyBlockStateAttributes(updated, getDefaultState());
+        return ensureCosmeticFire(Blocks.FIRE.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos));
     }
 
     @Override
@@ -134,6 +133,10 @@ public class CosmeticFireBlock extends AbstractFireBlock implements PolymerBlock
         if (age == 15 && random.nextInt(4) == 0 && !this.isFlammable(world.getBlockState(position.down()))) {
             world.removeBlock(position, false);
         }
+    }
+
+    private BlockState ensureCosmeticFire(BlockState state) {
+        return state.isAir() ? state : copyBlockStateAttributes(state, getDefaultState());
     }
 
     public static BlockState copyBlockStateAttributes(BlockState source, BlockState target) {

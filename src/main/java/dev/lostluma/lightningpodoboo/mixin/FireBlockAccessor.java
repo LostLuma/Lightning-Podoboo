@@ -18,10 +18,10 @@ public interface FireBlockAccessor {
     Object2IntMap<Block> getBurnChances();
 
     @Invoker("isRainingAround")
-    public boolean invokeIsRainingAround(World world, BlockPos pos);
+    boolean invokeIsRainingAround(World world, BlockPos pos);
 
     @Invoker("areBlocksAroundFlammable")
-    public boolean invokeAreBlocksAroundFlammable(BlockView world, BlockPos pos);
+    boolean invokeAreBlocksAroundFlammable(BlockView world, BlockPos pos);
 
     @Invoker("getFireTickDelay")
     static int invokeGetFireTickDelay(Random random) {
