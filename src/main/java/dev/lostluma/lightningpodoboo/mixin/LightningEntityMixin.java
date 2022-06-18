@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import dev.lostluma.lightningpodoboo.CosmeticFireBlock;
-import dev.lostluma.lightningpodoboo.LightningPodoboo;
 
 @Mixin(LightningEntity.class)
 public class LightningEntityMixin {
@@ -25,6 +24,6 @@ public class LightningEntityMixin {
             return state;
         }
 
-        return CosmeticFireBlock.copyBlockStateAttributes(state, LightningPodoboo.COSMETIC_FIRE_BLOCK.getDefaultState());
+        return CosmeticFireBlock.copyBlockStateAttributes(state, CosmeticFireBlock.getInstance().getDefaultState());
     }
 }

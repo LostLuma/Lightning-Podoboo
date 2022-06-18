@@ -4,14 +4,18 @@ import java.util.Map;
 
 import dev.lostluma.lightningpodoboo.mixin.FireBlockAccessor;
 import eu.pb4.polymer.api.block.PolymerBlock;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ConnectingBlock;
+import net.minecraft.block.MapColor;
+import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
@@ -26,10 +30,13 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 public class CosmeticFireBlock extends AbstractFireBlock implements PolymerBlock {
-    public static final IntProperty AGE = Properties.AGE_15;
-    public static final Map<Direction, BooleanProperty> DIRECTION_PROPERTIES = ConnectingBlock.FACING_PROPERTIES.entrySet().stream().filter(entry -> entry.getKey() != Direction.DOWN).collect(Util.toMap());
+    private static final IntProperty AGE = Properties.AGE_15;
+    private static final Map<Direction, BooleanProperty> DIRECTION_PROPERTIES = ConnectingBlock.FACING_PROPERTIES.entrySet().stream().filter(entry -> entry.getKey() != Direction.DOWN).collect(Util.toMap());
 
-    public CosmeticFireBlock(Settings settings) {
+    // Block Settings were copied from vanilla FireBlock instantiation
+    private static final CosmeticFireBlock COSMETIC_FIRE_BLOCK = new CosmeticFireBlock(AbstractBlock.Settings.of(Material.FIRE, MapColor.BRIGHT_RED).noCollision().breakInstantly().luminance(state -> 15).sounds(BlockSoundGroup.WOOL));
+
+    private CosmeticFireBlock(Settings settings) {
         super(settings, 1.0f);
 
         BlockState defaultState = stateManager.getDefaultState();
@@ -39,6 +46,10 @@ public class CosmeticFireBlock extends AbstractFireBlock implements PolymerBlock
         }
 
         setDefaultState(defaultState.with(AGE, 0));
+    }
+
+    public static CosmeticFireBlock getInstance() {
+        return COSMETIC_FIRE_BLOCK;
     }
 
     @Override

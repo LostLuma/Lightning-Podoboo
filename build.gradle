@@ -25,9 +25,9 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	// modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation include("eu.pb4:polymer:0.2.0-rc.4+1.19-rc2")
+	modImplementation include("eu.pb4:polymer:${project.polymer_version}")
 }
 
 processResources {

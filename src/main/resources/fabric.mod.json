@@ -14,17 +14,12 @@
   "license": "MIT",
   "icon": "assets/lightning_podoboo/icon.png",
   "environment": "*",
-  "entrypoints": {
-    "main": [
-      "dev.lostluma.lightningpodoboo.LightningPodoboo"
-    ]
-  },
+  "entrypoints": {},
   "mixins": [
     "lightningpodoboo.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.6",
-    "fabric": "*",
     "minecraft": "1.19.x",
     "java": ">=17"
   },
