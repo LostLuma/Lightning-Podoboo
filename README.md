@@ -14,7 +14,7 @@ You can download Lightning Podoboo from the following sources:
 
 ## Installation
 
-Ensure you installed the [Fabric Loader](https://fabricmc.net/use/installer/) and drop the [Fabric API](https://modrinth.com/mod/fabric-api) mod into your mods folder alongside Lightning Podoboo.  
+Ensure you've installed the [Fabric](https://fabricmc.net/use/installer) or [Quilt](https://quiltmc.org/install) Loader and drop Lightning Podoboo into your mods folder.  
 When used on a multiplayer server players connecting do not need to install this mod, and see no benefit from doing so.
 
 ## Motivation
