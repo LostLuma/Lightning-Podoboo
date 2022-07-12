@@ -3,7 +3,7 @@
   "id": "lightningpodoboo",
   "version": "${version}",
   "name": "Lightning Podoboo",
-  "description": "Makes fire created by natural lightning cosmetic, meaning no blocks are destroyed from bad weather.",
+  "description": "Makes fire created by natural lightning cosmetic, meaning no blocks are destroyed during thunderstorms.",
   "authors": [
     "LostLuma"
   ],
