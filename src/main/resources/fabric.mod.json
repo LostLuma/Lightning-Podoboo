@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "lightningpodoboo",
+  "id": "lightning_podoboo",
   "version": "${version}",
   "name": "Lightning Podoboo",
   "description": "Makes fire created by natural lightning cosmetic, meaning no blocks are destroyed during thunderstorms.",
@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {},
   "mixins": [
-    "lightningpodoboo.mixins.json"
+    "lightning_podoboo.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.6",

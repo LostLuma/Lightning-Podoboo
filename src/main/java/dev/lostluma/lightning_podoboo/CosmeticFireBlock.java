@@ -1,8 +1,8 @@
-package dev.lostluma.lightningpodoboo;
+package dev.lostluma.lightning_podoboo;
 
 import java.util.Map;
 
-import dev.lostluma.lightningpodoboo.mixin.FireBlockAccessor;
+import dev.lostluma.lightning_podoboo.mixin.FireBlockAccessor;
 import eu.pb4.polymer.api.block.PolymerBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractFireBlock;

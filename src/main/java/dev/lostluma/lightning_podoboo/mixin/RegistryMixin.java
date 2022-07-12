@@ -1,11 +1,11 @@
-package dev.lostluma.lightningpodoboo.mixin;
+package dev.lostluma.lightning_podoboo.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import dev.lostluma.lightningpodoboo.CosmeticFireBlock;
+import dev.lostluma.lightning_podoboo.CosmeticFireBlock;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
