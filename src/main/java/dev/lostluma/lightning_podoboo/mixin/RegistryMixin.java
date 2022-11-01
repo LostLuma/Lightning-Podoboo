@@ -13,6 +13,6 @@ import net.minecraft.util.registry.Registry;
 public class RegistryMixin {
     @Inject(method = "freezeRegistries()V", at = @At("HEAD"))
     private static void beforeRegistryFreeze(CallbackInfo callbackInfo) {
-        Registry.register(Registry.BLOCK, new Identifier("lightningpodoboo", "cosmetic_fire"), CosmeticFireBlock.getInstance());
+        Registry.register(Registry.BLOCK, new Identifier("lightning_podoboo", "cosmetic_fire"), CosmeticFireBlock.getInstance());
     }
 }
