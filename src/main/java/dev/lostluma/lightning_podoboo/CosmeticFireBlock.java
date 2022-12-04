@@ -3,7 +3,7 @@ package dev.lostluma.lightning_podoboo;
 import java.util.Map;
 
 import dev.lostluma.lightning_podoboo.mixin.FireBlockAccessor;
-import eu.pb4.polymer.api.block.PolymerBlock;
+import eu.pb4.polymer.core.api.block.PolymerBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.Block;
@@ -97,7 +97,7 @@ public class CosmeticFireBlock extends AbstractFireBlock implements PolymerBlock
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos position, BlockState oldState, boolean notify) {
         super.onBlockAdded(state, world, position, oldState, notify);
-        world.createAndScheduleBlockTick(position, this, FireBlockAccessor.invokeGetFireTickDelay(world.random));
+        world.scheduleBlockTick(position, this, FireBlockAccessor.invokeGetFireTickDelay(world.random));
     }
 
     @Override
@@ -109,7 +109,7 @@ public class CosmeticFireBlock extends AbstractFireBlock implements PolymerBlock
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos position, Random random) {
         // This is an adapted version of FireBlock's scheduledTick method
         // Removing the infinyburn check as well as the placement of new fire
-        world.createAndScheduleBlockTick(position, this, FireBlockAccessor.invokeGetFireTickDelay(world.random));
+        world.scheduleBlockTick(position, this, FireBlockAccessor.invokeGetFireTickDelay(world.random));
 
         if (!state.canPlaceAt(world, position)) {
             world.removeBlock(position, false);
