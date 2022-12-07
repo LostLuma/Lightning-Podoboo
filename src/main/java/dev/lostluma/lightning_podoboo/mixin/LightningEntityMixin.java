@@ -19,7 +19,7 @@ public class LightningEntityMixin {
     private ServerPlayerEntity channeler;
 
     @ModifyVariable(method = "spawnFire(I)V", at = @At("STORE"))
-    private BlockState spawnFireGetState(BlockState state) {
+    private BlockState lightning_podoboo$spawnFireGetState(BlockState state) {
         if (this.channeler != null) {
             return state;
         }
