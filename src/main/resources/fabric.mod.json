@@ -12,7 +12,6 @@
     "sources": "https://github.com/LostLuma/Lightning-Podoboo"
   },
   "license": "MIT",
-  "icon": "assets/lightning_podoboo/icon.png",
   "environment": "*",
   "entrypoints": {},
   "mixins": [
