@@ -1,4 +1,4 @@
-package dev.lostluma.lightning_podoboo.mixin;
+package net.lostluma.lightning_podoboo.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;

@@ -1,5 +1,6 @@
-package dev.lostluma.lightning_podoboo.mixin;
+package net.lostluma.lightning_podoboo.mixin;
 
+import net.lostluma.lightning_podoboo.CosmeticFireBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -9,8 +10,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-
-import dev.lostluma.lightning_podoboo.CosmeticFireBlock;
 
 @Mixin(LightningEntity.class)
 public class LightningEntityMixin {

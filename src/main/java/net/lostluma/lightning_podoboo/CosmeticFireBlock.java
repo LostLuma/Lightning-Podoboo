@@ -1,9 +1,9 @@
-package dev.lostluma.lightning_podoboo;
+package net.lostluma.lightning_podoboo;
 
 import java.util.Map;
 
-import dev.lostluma.lightning_podoboo.mixin.FireBlockAccessor;
 import eu.pb4.polymer.core.api.block.PolymerBlock;
+import net.lostluma.lightning_podoboo.mixin.FireBlockAccessor;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.Block;
@@ -90,8 +90,10 @@ public class CosmeticFireBlock extends AbstractFireBlock implements PolymerBlock
             if (entity.getFireTicks() <= 0) {
                 entity.setOnFireFor(8);
             }
-            entity.damage(DamageSource.IN_FIRE, 1.0f);
+            entity.damage(world.getDamageSources().inFire(), 1.0f);
         }
+
+        // super.onEntityCollision(state, world, pos, entity);
     }
 
     @Override
