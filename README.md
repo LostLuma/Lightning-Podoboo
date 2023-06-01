@@ -14,13 +14,13 @@ You can download Lightning Podoboo from the following sources:
 
 ## Installation
 
-Ensure you've installed [Quilt](https://quiltmc.org/install) Loader and drop Lightning Podoboo into your mods folder.  
+Ensure you've installed [Quilt Loader](https://quiltmc.org/install) and drop Lightning Podoboo into your mods folder.  
 When used on a multiplayer server players connecting do not need to install this mod, and see no benefit from doing so.
 
 ## Motivation
 
-This mod was created to work in tandem with the popular anti ender grief datapacks, disabling an annoying part of the game without causing any unintended side-effects while doing so:
+This mod was created to work in tandem with the ever popular anti ender grief datapacks, disabling an annoying part of the game without causing any unintended side-effects while doing so:
 
 - Fire from other sources burns down blocks as usual
-- Lightning created through tridents spawns vanilla fire
+- Lightning created via tridents spawns vanilla fire
 - You (and other entities) will still burn when hit by lightning
