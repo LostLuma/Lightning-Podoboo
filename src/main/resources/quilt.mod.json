@@ -1,0 +1,48 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "net.lostluma",
+		"id": "lightning_podoboo",
+		"version": "${version}",
+		"metadata": {
+			"name": "Lightning Podoboo",
+			"description": "Makes fire created by natural lightning cosmetic, meaning no blocks are destroyed during thunderstorms.",
+			"contributors": {
+				"LostLuma": "Owner"
+			},
+			"contact": {
+				"homepage": "https://go.lostluma.net/lightning-podoboo",
+				"issues": "https://go.lostluma.net/lightning-podoboo-issues",
+				"sources": "https://go.lostluma.net/lightning-podoboo-source"
+			},
+			"license": {
+				"name": "MIT License",
+				"id": "MIT",
+				"url": "https://go.lostluma.net/lightning-podoboo-license"
+			}
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"depends": [
+			{
+				"id": "java",
+				"versions": ">=17.0.0"
+			},
+			{
+				"id": "minecraft",
+				"versions": [
+					">=1.19.4-",
+					"<=1.19.4"
+				]
+			},
+			{
+				"id": "quilt_loader",
+				"versions": ">=0.18.10-"
+			},
+			{
+				"id": "polymer-core",
+				"versions": ">=0.4.0-"
+			}
+		]
+	},
+	"mixin": "lightning_podoboo.mixins.json"
+}
