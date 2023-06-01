@@ -6,9 +6,13 @@ jobs:
     strategy:
       matrix:
         java: [
-          17,    # Current Java LTS & minimum supported by Minecraft
+          17,
+          19,
         ]
-        os: [ubuntu-20.04, windows-2022]
+        os: [
+          ubuntu-20.04,
+          windows-2022
+        ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout repository
@@ -24,10 +28,14 @@ jobs:
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
       - name: build
-        run: ./gradlew build
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+          cache-read-only: ${{ github.ref != 'refs/heads/stardust' }}
       - name: capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '17' }} # Only upload artifacts built from latest java on one OS
+        if: ${{ runner.os == 'Linux' && matrix.java == '19' }} # Upload artifacts from one job, ignore the rest
         uses: actions/upload-artifact@v3
         with:
           name: lightning-podoboo-artifacts
           path: build/libs
+          if-no-files-found: error
