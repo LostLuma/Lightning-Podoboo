@@ -44,5 +44,5 @@
 			}
 		]
 	},
-	"mixin": "lightning_podoboo.mixins.json"
+	"mixin": "lightning_podoboo.mixin.json"
 }

@@ -5,26 +5,26 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import net.minecraft.block.Block;
-import net.minecraft.block.FireBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FireBlock;
 
 @Mixin(FireBlock.class)
 public interface FireBlockAccessor {
     @Accessor
-    Object2IntMap<Block> getBurnChances();
+    Object2IntMap<Block> getIgniteOdds();
 
-    @Invoker("isRainingAround")
-    boolean invokeIsRainingAround(World world, BlockPos pos);
+    @Invoker("isNearRain")
+    boolean invokeIsNearRain(Level world, BlockPos position);
 
-    @Invoker("areBlocksAroundFlammable")
-    boolean invokeAreBlocksAroundFlammable(BlockView world, BlockPos pos);
+    @Invoker("isValidFireLocation")
+    boolean invokeIsValidFireLocation(BlockGetter world, BlockPos position);
 
     @Invoker("getFireTickDelay")
-    static int invokeGetFireTickDelay(Random random) {
-        throw new  AssertionError();
+    static int invokeGetFireTickDelay(RandomSource random) {
+        throw new AssertionError();
     }
 }
