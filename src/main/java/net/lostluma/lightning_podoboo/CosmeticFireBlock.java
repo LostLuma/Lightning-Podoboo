@@ -25,21 +25,17 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
     private static final IntegerProperty AGE = BlockStateProperties.AGE_15;
     private static final Map<Direction, BooleanProperty> DIRECTION_PROPERTIES = PipeBlock.PROPERTY_BY_DIRECTION.entrySet().stream().filter(entry -> entry.getKey() != Direction.DOWN).collect(Util.toMap());
 
     // Block Settings were copied from vanilla FireBlock instantiation
-    private static final CosmeticFireBlock COSMETIC_FIRE_BLOCK = new CosmeticFireBlock(BlockBehaviour.Properties.of(Material.FIRE, MaterialColor.FIRE).noCollission().instabreak().lightLevel(state -> 15).sound(SoundType.WOOL));
-
-    /*
     private static final CosmeticFireBlock COSMETIC_FIRE_BLOCK = new CosmeticFireBlock(
-        AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED).replaceable().noCollision().breakInstantly().luminance(state -> 15).sounds(BlockSoundGroup.WOOL).pistonBehavior(PistonBehavior.DESTROY)
+        BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel(state -> 15).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)
     );
-     */
 
     private CosmeticFireBlock(Properties properties) {
         super(properties, 1.0f);
