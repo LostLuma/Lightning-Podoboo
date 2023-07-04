@@ -29,14 +29,16 @@
 			},
 			{
 				"id": "minecraft",
-				"versions": [
-					">=1.20.1-",
-					"<=1.20.1"
-				]
+				"versions": {
+					"all": [
+						">=1.20.1-",
+						"<=1.20.1"
+					]
+				}
 			},
 			{
 				"id": "quilt_loader",
-				"versions": ">=0.18.10-"
+				"versions": ">=0.19.2"
 			},
 			{
 				"id": "polymer-core",

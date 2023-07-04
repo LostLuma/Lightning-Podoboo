@@ -3,7 +3,7 @@
 minecraft = "1.20.1"
 quilt_mappings = "1.20.1-rc1+build.1"
 
-quilt_loader = "0.18.10"
+quilt_loader = "0.19.2"
 polymer = "0.5.0+1.20"
 
 [libraries]
