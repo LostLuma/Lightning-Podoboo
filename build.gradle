@@ -3,9 +3,12 @@ plugins {
 	alias libs.plugins.quilt.loom
 }
 
-base.archivesName = project.archives_base_name
-version = "${project.mod_version}+minecraft-${libs.versions.minecraft.get()}"
 group = project.maven_group
+version = "${project.mod_version}+minecraft-${libs.versions.minecraft.get()}"
+
+base {
+	archivesName = project.archives_base_name
+}
 
 repositories {
 	// Add repositories to retrieve artifacts from in here.
