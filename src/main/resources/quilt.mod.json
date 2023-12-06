@@ -31,18 +31,18 @@
 				"id": "minecraft",
 				"versions": {
 					"all": [
-						">=1.20.2-",
-						"<=1.20.2"
+						">=1.20.3-",
+						"<=1.20.3"
 					]
 				}
 			},
 			{
 				"id": "quilt_loader",
-				"versions": ">=0.19.2"
+				"versions": ">=0.22.0"
 			},
 			{
 				"id": "polymer-core",
-				"versions": ">=0.5.0-"
+				"versions": ">=0.7.0-"
 			}
 		]
 	},

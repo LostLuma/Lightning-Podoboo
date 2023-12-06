@@ -2,6 +2,8 @@ package net.lostluma.lightning_podoboo;
 
 import java.util.Map;
 
+import com.mojang.serialization.MapCodec;
+
 import eu.pb4.polymer.core.api.block.PolymerBlock;
 import net.lostluma.lightning_podoboo.mixin.FireBlockAccessor;
 import net.minecraft.Util;
@@ -29,6 +31,8 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
 public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
+   public static final MapCodec<CosmeticFireBlock> CODEC = simpleCodec(CosmeticFireBlock::new);
+
     private static final IntegerProperty AGE = BlockStateProperties.AGE_15;
     private static final Map<Direction, BooleanProperty> DIRECTION_PROPERTIES = PipeBlock.PROPERTY_BY_DIRECTION.entrySet().stream().filter(entry -> entry.getKey() != Direction.DOWN).collect(Util.toMap());
 
@@ -47,6 +51,11 @@ public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
         }
 
         registerDefaultState(defaultState.setValue(AGE, 0));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseFireBlock> codec() {
+        return CODEC;
     }
 
     public static CosmeticFireBlock getInstance() {

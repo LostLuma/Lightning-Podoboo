@@ -23,11 +23,7 @@ repositories {
 // See https://docs.gradle.org/current/userguide/platforms.html for information on how version catalogs work.
 dependencies {
 	minecraft libs.minecraft
-
-	mappings loom.layered {
-		mappings "org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:intermediary-v2"
-		officialMojangMappings()
-	}
+	mappings loom.officialMojangMappings()
 
 	modImplementation libs.quilt.loader
 	modImplementation include(libs.polymer.get())
