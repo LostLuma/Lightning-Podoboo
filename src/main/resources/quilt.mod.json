@@ -19,7 +19,8 @@
 				"name": "MIT License",
 				"id": "MIT",
 				"url": "https://go.lostluma.net/lightning-podoboo-license"
-			}
+			},
+			"icon": "assets/lightning_podoboo/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"depends": [
