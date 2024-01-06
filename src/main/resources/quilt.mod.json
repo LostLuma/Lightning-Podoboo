@@ -8,7 +8,9 @@
 			"name": "Lightning Podoboo",
 			"description": "Makes fire created by natural lightning cosmetic, meaning no blocks are destroyed during thunderstorms.",
 			"contributors": {
-				"LostLuma": "Owner"
+				"LostLuma": "Owner",
+				"EnnuiL": "Contributor",
+				"Pixaurora": ["Contributor", "Illustrator"]
 			},
 			"contact": {
 				"homepage": "https://go.lostluma.net/lightning-podoboo",
