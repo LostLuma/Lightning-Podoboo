@@ -4,6 +4,7 @@
   "package": "net.lostluma.lightning_podoboo.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BlockBehaviourAccessor",
     "BuiltInRegistriesMixin",
     "FireBlockAccessor",
     "LightningBoltMixin"

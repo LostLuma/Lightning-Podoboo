@@ -5,6 +5,7 @@ import java.util.Map;
 import com.mojang.serialization.MapCodec;
 
 import eu.pb4.polymer.core.api.block.PolymerBlock;
+import net.lostluma.lightning_podoboo.mixin.BlockBehaviourAccessor;
 import net.lostluma.lightning_podoboo.mixin.FireBlockAccessor;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -72,18 +73,13 @@ public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
     }
 
     @Override
-    public Block getPolymerBlock(BlockState state) {
-        return Blocks.FIRE;
-    }
-
-    @Override
     public BlockState getPolymerBlockState(BlockState state) {
         return copyBlockStateAttributes(state, Blocks.FIRE.defaultBlockState());
     }
 
     @Override
-    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-        return Blocks.FIRE.canSurvive(state, world, pos);
+    protected boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+        return ((BlockBehaviourAccessor) Blocks.FIRE).callCanSurvive(state, world, pos);
     }
 
     @Override
@@ -98,7 +94,7 @@ public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
         if (!entity.fireImmune()) {
             entity.setRemainingFireTicks(entity.getRemainingFireTicks() + 1);
             if (entity.getRemainingFireTicks() <= 0) {
-                entity.setSecondsOnFire(8);
+                entity.igniteForSeconds(8);
             }
             entity.hurt(world.damageSources().inFire(), 1.0f);
         }
@@ -113,8 +109,8 @@ public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
     }
 
     @Override
-	public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos position, BlockPos neighborPos) {
-        return ensureCosmeticFire(Blocks.FIRE.updateShape(state, direction, neighborState, level, position, neighborPos));
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos position, BlockPos neighborPos) {
+        return ensureCosmeticFire(((BlockBehaviourAccessor) Blocks.FIRE).callUpdateShape(state, direction, neighborState, level, position, neighborPos));
     }
 
     @Override

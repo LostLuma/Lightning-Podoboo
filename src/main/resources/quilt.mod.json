@@ -8,7 +8,7 @@
 			"name": "Lightning Podoboo",
 			"description": "Makes fire created by natural lightning cosmetic, meaning no blocks are destroyed during thunderstorms.",
 			"contributors": {
-				"LostLuma": "Owner",
+				"LostLuma": "Author",
 				"EnnuiL": "Contributor",
 				"Pixaurora": ["Contributor", "Illustrator"]
 			},
@@ -28,24 +28,24 @@
 		"depends": [
 			{
 				"id": "java",
-				"versions": ">=17.0.0"
+				"versions": ">=21.0.0"
 			},
 			{
 				"id": "minecraft",
 				"versions": {
 					"all": [
-						">=1.20.4-",
-						"<=1.20.4"
+						">=1.20.5-",
+						"<=1.20.5"
 					]
 				}
 			},
 			{
 				"id": "quilt_loader",
-				"versions": ">=0.23.0"
+				"versions": ">=0.25.0"
 			},
 			{
 				"id": "polymer-core",
-				"versions": ">=0.7.1-"
+				"versions": ">=0.8.0-"
 			}
 		]
 	},
