@@ -15,6 +15,6 @@ import net.minecraft.resources.ResourceLocation;
 public class BuiltInRegistriesMixin {
     @Inject(method = "createContents()V", at = @At("RETURN"))
     private static void lightning_podoboo$onRegistriesInit(CallbackInfo callbackInfo) {
-        Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(Constants.MOD_ID, "cosmetic_fire"), CosmeticFireBlock.getInstance());
+        Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cosmetic_fire"), CosmeticFireBlock.getInstance());
 	}
 }
