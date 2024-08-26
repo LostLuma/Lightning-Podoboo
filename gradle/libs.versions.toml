@@ -1,9 +1,9 @@
 [versions]
 # The latest versions are available at https://lambdaurora.dev/tools/import_quilt.html
-minecraft = "1.21"
+minecraft = "1.21.1"
 
 quilt_loader = "0.26.0"
-polymer = "0.9.1+1.21"
+polymer = "0.9.11+1.21.1"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
