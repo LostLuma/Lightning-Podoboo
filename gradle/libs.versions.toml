@@ -15,4 +15,4 @@ quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loade
 [bundles]
 
 [plugins]
-quilt_loom = { id = "org.quiltmc.loom", version = "1.6.8" }
+quilt_loom = { id = "org.quiltmc.loom", version = "1.7.4" }
