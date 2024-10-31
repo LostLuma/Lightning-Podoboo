@@ -10,13 +10,13 @@ import net.lostluma.lightning_podoboo.mixin.FireBlockAccessor;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.GameRules;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -30,6 +30,8 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import org.jetbrains.annotations.NotNull;
+import xyz.nucleoid.packettweaker.PacketContext;
 
 public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
    public static final MapCodec<CosmeticFireBlock> CODEC = simpleCodec(CosmeticFireBlock::new);
@@ -37,10 +39,17 @@ public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
     private static final IntegerProperty AGE = BlockStateProperties.AGE_15;
     private static final Map<Direction, BooleanProperty> DIRECTION_PROPERTIES = PipeBlock.PROPERTY_BY_DIRECTION.entrySet().stream().filter(entry -> entry.getKey() != Direction.DOWN).collect(Util.toMap());
 
-    // Block Settings were copied from vanilla FireBlock instantiation
-    private static final CosmeticFireBlock COSMETIC_FIRE_BLOCK = new CosmeticFireBlock(
-        BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel(state -> 15).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)
-    );
+    private static final CosmeticFireBlock COSMETIC_FIRE_BLOCK;
+
+	static {
+		ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cosmetic_fire");
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, id);
+
+		// Block Settings were copied from vanilla FireBlock instantiation
+		COSMETIC_FIRE_BLOCK = new CosmeticFireBlock(
+			BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel(state -> 15).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY).setId(key)
+		);
+	}
 
     private CosmeticFireBlock(Properties properties) {
         super(properties, 1.0f);
@@ -55,7 +64,7 @@ public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
     }
 
     @Override
-    protected MapCodec<? extends BaseFireBlock> codec() {
+    protected @NotNull MapCodec<? extends BaseFireBlock> codec() {
         return CODEC;
     }
 
@@ -72,10 +81,10 @@ public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
         }
     }
 
-    @Override
-    public BlockState getPolymerBlockState(BlockState state) {
-        return copyBlockStateAttributes(state, Blocks.FIRE.defaultBlockState());
-    }
+	@Override
+	public BlockState getPolymerBlockState(BlockState state, PacketContext packetContext) {
+		return copyBlockStateAttributes(state, Blocks.FIRE.defaultBlockState());
+	}
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
@@ -109,8 +118,8 @@ public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
     }
 
     @Override
-    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos position, BlockPos neighborPos) {
-        return ensureCosmeticFire(((BlockBehaviourAccessor) Blocks.FIRE).callUpdateShape(state, direction, neighborState, level, position, neighborPos));
+    protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos blockPos2, BlockState blockState2, RandomSource randomSource) {
+        return ensureCosmeticFire(((BlockBehaviourAccessor) Blocks.FIRE).callUpdateShape(state, levelReader, scheduledTickAccess, blockPos, direction, blockPos2, blockState2, randomSource));
     }
 
     @Override
