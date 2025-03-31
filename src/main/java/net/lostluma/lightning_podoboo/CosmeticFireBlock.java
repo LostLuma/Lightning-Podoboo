@@ -99,19 +99,6 @@ public class CosmeticFireBlock extends BaseFireBlock implements PolymerBlock {
     }
 
     @Override
-	public void entityInside(BlockState state, Level world, BlockPos position, Entity entity) {
-        if (!entity.fireImmune()) {
-            entity.setRemainingFireTicks(entity.getRemainingFireTicks() + 1);
-            if (entity.getRemainingFireTicks() <= 0) {
-                entity.igniteForSeconds(8);
-            }
-            entity.hurt(world.damageSources().inFire(), 1.0f);
-        }
-
-        // super.entityInside(state, world, pos, entity);
-    }
-
-    @Override
 	public void onPlace(BlockState state, Level world, BlockPos position, BlockState oldState, boolean notify) {
         super.onPlace(state, world, position, oldState, notify);
         world.scheduleTick(position, this, FireBlockAccessor.invokeGetFireTickDelay(world.random));
